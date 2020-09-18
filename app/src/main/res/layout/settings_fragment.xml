@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.SettingsFragment">
+
+
+    <Button
+
+       android:id="@+id/share"
+
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Share this app"
+        android:layout_marginTop="100dp"
+        android:textAlignment="textStart"
+        android:background="@drawable/folder"
+
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Rate us"
+
+        android:id="@+id/rateUs"
+        android:layout_marginTop="170dp"
+        android:textAlignment="textStart"
+        android:background="@drawable/folder"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="leave feedback"
+        android:id="@+id/leaveFeedback"
+
+        android:layout_marginTop="240dp"
+        android:textAlignment="textStart"
+       android:background="@drawable/folder"
+        />
+    <Button
+
+      android:id="@+id/clear_history"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="clear history"
+          android:textColor="@color/purple"
+
+        android:layout_marginTop="310dp"
+        android:textAlignment="textStart"
+       android:background="@drawable/folder"
+        />
+
+
+
+
+
+
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+
+     android:text="v 1.0.0"
+         android:layout_marginTop="580dp"
+     android:layout_centerHorizontal="true"
+
+     />
+
+
+
+
+</RelativeLayout>
