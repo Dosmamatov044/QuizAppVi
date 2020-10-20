@@ -4,82 +4,75 @@ package com.Quiztion;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+
 import android.os.Bundle;
+
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
-
-
-import com.QuizApp;
+import com.Result.ResultActivity;
 import com.airbnb.lottie.LottieAnimationView;
-import com.data.IQuizApiClient;
 
 
-import com.example.quizappvi.MainActivity;
+
+
 import com.example.quizappvi.R;
 
-import com.google.gson.internal.$Gson$Preconditions;
+
+
 import com.model.Question;
-import com.model.QuizResponse;
+
 
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-import butterknife.BindView;
+
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
 
 public class QuizActivity extends AppCompatActivity implements QuizActivityAdapter.Listener  {
-
-    /*private QuizActivityAdapter adapter;
-    private ArrayList<quizModel> list = new ArrayList<quizModel>();
-     Context context;*/
-QuizViewModel viewModel;
+    QuizViewModel viewModel;
       TextView changeAmountprogress;
    TextView categoryText;
-    LottieAnimationView animationView;
 
-   int position;
+   TextView cText;
+
+    public int position;
 
     public static final String SEEK_BAR = "amount";
     public static final String DIFF_DIFFICULT = "difficult";
-    public static final String CATEG_ID = "category_id";
+
     public static final String CATEGORY_NAME = "category";
       int category;
     String  difficulty;
     int amount;
-Integer Noll=0;
+    String categoryForSpinner;
+    LottieAnimationView lottie;
     QuizActivityAdapter adapter;
     List<Question> list=new ArrayList<>();
-   QuizActivityAdapter.Listener listener;
+
 ProgressBar progressBar;
 RecyclerView recyclerView;
 ImageView image;
 Button skip;
-    public static void start(Context context, int amount, int category, String difficultValue) {
-
-        Intent intent = new Intent(context, QuizActivity.class);
-        intent.putExtra(SEEK_BAR, amount);
-        intent.putExtra(CATEGORY_NAME, category);
-        intent.putExtra(DIFF_DIFFICULT, difficultValue);
-        context.startActivity(intent);
 
 
-    }
 
 
 
@@ -90,8 +83,10 @@ Button skip;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qui__light);
 
-        animationView
-                = findViewById(R.id.animationView);
+
+       viewModel= ViewModelProviders.of(this).get(QuizViewModel.class);
+
+
 
 
         ButterKnife.bind(QuizActivity.this);
@@ -103,12 +98,13 @@ image=findViewById(R.id.Vimage);
 
 
 
+lottie=findViewById(R.id.animationView);
         progressBar=findViewById(R.id.progressBar);
         changeAmountprogress=findViewById(R.id.progress);
         categoryText=findViewById(R.id.text);
 
         recyclerView = findViewById(R.id.recyclerQuizActivity);
-        adapter = new QuizActivityAdapter(this);
+        adapter = new QuizActivityAdapter(this,list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
@@ -120,10 +116,10 @@ image=findViewById(R.id.Vimage);
         });
         SnapHelper snapHelper=new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
-
+lottie.setVisibility(View.VISIBLE);
 
         viewModel = ViewModelProviders.of(this).get(QuizViewModel.class);
-        viewModel.init(amount , category , difficulty);
+       // viewModel.init(amount , category , difficulty);
         viewModel.questions.observe(this, new Observer<List<Question>>() {
 
 
@@ -131,6 +127,8 @@ image=findViewById(R.id.Vimage);
             public void onChanged(List<Question> questions) {
                 adapter.setQuestions(questions);
             }});
+
+        viewModel.init(amount , category , difficulty);
         getPosition();
 
 
@@ -140,47 +138,78 @@ image=findViewById(R.id.Vimage);
         getQuizData();
 
 
+        viewModel.finishEvent.observe(this, aVoid -> {
+            finish();
+        });
+
+        viewModel.openResultEvent.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                ResultActivity.start(QuizActivity.this, integer);
+            }
+        });
 
     }
 
 
-    private void getQuizData() {
-        Intent intent = getIntent();
-         amount = intent.getIntExtra(SEEK_BAR, 5);
-         category = intent.getIntExtra(CATEGORY_NAME, 0);
+    public static void start(Context context, Integer amount, int category, String difficultValue, String categoryForSpinner) {
 
-        String difficulty =(Objects.requireNonNull(intent.getStringExtra(DIFF_DIFFICULT)).toLowerCase());
-        if (difficulty.equals("any difficulty")){
+        Intent intent = new Intent(context, QuizActivity.class);
+        intent.putExtra(SEEK_BAR, amount);
+        intent.putExtra(CATEGORY_NAME, category);
+        intent.putExtra(DIFF_DIFFICULT, difficultValue);
+        intent.putExtra("category", categoryForSpinner);
+
+        context.startActivity(intent);
+
+
+    }
+
+    private void getQuizData() {
+
+        Intent intent = getIntent();
+        amount = intent.getIntExtra(SEEK_BAR, 5);
+        category = intent.getIntExtra(CATEGORY_NAME, 0);
+
+        difficulty = intent.getStringExtra(DIFF_DIFFICULT);
+        categoryForSpinner = intent.getStringExtra("category");
+
+        if (category == 8) {
+            category = 0;
+        }
+
+        if (difficulty.equals("Any")) {
             difficulty = null;
         }
 
 
-
-
-
-
-
-       viewModel.init(amount, category, difficulty);
-        viewModel.questions.observe(this, questions -> {
+        viewModel.init(amount , category , difficulty);
+        viewModel.questions.observe(this, (List<Question> questions) -> {
             try {
 
 
-                if ( list.size()==0) {
+                if ( list.size()!=0) {
 
-
-                    animationView.setVisibility(View.VISIBLE);
+lottie.setVisibility(View.GONE);
+                    adapter.setQuestions(list);
 
                     image.setVisibility(View.VISIBLE);
-                    animationView.setVisibility(View.INVISIBLE);
+
                     skip.setVisibility(View.VISIBLE);
                     list = questions;
                     recyclerView.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
                     changeAmountprogress.setVisibility(View.VISIBLE);
                     categoryText.setVisibility(View.VISIBLE);
-                    adapter.update(list);
 
-                    adapter.setQuestions(list);
+
+                    categoryText.setText(String.valueOf(list.get(position).getDifficulty()));
+                  //   categoryText.setText(String.valueOf(categoryForSpinner));
+
+
+
+
+
                     progressBar.setMax(list.size());
 
 
@@ -188,6 +217,16 @@ image=findViewById(R.id.Vimage);
 
 
                 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -211,13 +250,7 @@ image=findViewById(R.id.Vimage);
 
 
 
-    @Override
-    public void onAnswerClick(int position, int selectedAnswerPosition) {
 
-        viewModel.onAnswerClick(position,selectedAnswerPosition);
-
-
-    }
 
     private void getPosition() {
         try {
@@ -225,7 +258,7 @@ image=findViewById(R.id.Vimage);
 
             viewModel.currentQuestionPosition.observe(this, new Observer<Integer>() {
                 @SuppressLint("SetTextI18n")
-                @Override
+             @Override
                 public void onChanged(Integer position) {
                     recyclerView.smoothScrollToPosition(position);
 
@@ -241,7 +274,7 @@ image=findViewById(R.id.Vimage);
                 }
             });
 
-        } catch (Exception noNul) {
+        } catch (Exception ignored) {
         }
     }
     @Override
@@ -252,13 +285,22 @@ image=findViewById(R.id.Vimage);
 
     @OnClick(R.id.skip)
 public  void skipClick(View view){
+        Toasty.success(getApplicationContext(), "NEXT", Toast.LENGTH_SHORT, true).show();
+
 
         viewModel.onSkipClick();
 
 }
     @OnClick(R.id.Vimage)
      void onBackPressed(View view) {
-        super.onBackPressed();
-    }
+        viewModel.onBack();
 
-}
+
+
+
+
+        }
+
+    @Override
+    public void onAnswerClick(int position, int selectedAnswerPosition) {
+        viewModel.onAnswerClick(position,selectedAnswerPosition); }}

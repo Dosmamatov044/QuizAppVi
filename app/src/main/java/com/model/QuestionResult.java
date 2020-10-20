@@ -14,16 +14,18 @@ import java.util.List;
 public class QuestionResult {
 
    @PrimaryKey(autoGenerate = true)
-    private int id;
+
+   private int id;
 @ColumnInfo(name = "category")
     private  String category;
     @ColumnInfo(name = "difficulty")
     private String difficulty;
-    @ColumnInfo(name = "correctAnswerResult")
+    @ColumnInfo(name = "correct_answer_result")
     private  int correctAnswerResult;
-
+    @ColumnInfo(name = "questions")
     @TypeConverters({QuestionConverter.class})
     private List<Question> questions;
+    @ColumnInfo(name = "created_at")
     @TypeConverters(DataConverter.class)
    private Date createdAt;
 
@@ -35,6 +37,10 @@ public class QuestionResult {
         this.questions = questions;
         this.createdAt = createdAt;
     }
+
+
+
+
 
     public int getId() {
         return id;
@@ -74,13 +80,17 @@ public class QuestionResult {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
-    }
 
-    public Date getCreatedAt() {
-        return createdAt;
+
     }
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 }
+
+

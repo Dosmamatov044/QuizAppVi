@@ -1,17 +1,13 @@
-package com.example.quizappvi.ui.fragments;
+package com;
 
 import org.angmarch.views.NiceSpinner;
 
 import java.util.LinkedList;
 import java.util.List;
 
-class ViewHelperUtil {
-
-    public static void show(List<String> dataList, NiceSpinner niceSpinner) {
+public class SpinnerHelper {
+    public static void set(List<String> dataList, NiceSpinner niceSpinner){
         List<String> data = new LinkedList<>(dataList);
         niceSpinner.attachDataSource(data);
     }
-
-
-
 }

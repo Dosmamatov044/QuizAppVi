@@ -1,8 +1,10 @@
-package com.model;
+package com.data.remote;
+
+
 
 import java.util.Date;
 
-class History {
+public class History {
 
     private int id;
 
@@ -12,13 +14,21 @@ private  int correctAnswer;
 private int amount;
 private Date createAt;
 
-    public History(String category, String difficulty, int correctAnswer, int amount, Date createAt) {
+    public History(int id, String category, String difficulty, int correctAnswer, int amount, Date createAt) {
+        this.id=id;
         this.category = category;
         this.difficulty = difficulty;
         this.correctAnswer = correctAnswer;
         this.amount = amount;
         this.createAt = createAt;
     }
+
+
+
+
+    public int getId() {
+       return id;
+   }
 
     public String getCategory() {
         return category;

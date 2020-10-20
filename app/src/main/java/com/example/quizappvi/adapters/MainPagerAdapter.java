@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.quizappvi.ui.fragments.HistoryFragment;
+import com.data.remote.HistoryFragment;
 import com.example.quizappvi.ui.fragments.MainFragment;
 import com.example.quizappvi.ui.fragments.SettingsFragment;
 

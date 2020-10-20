@@ -14,5 +14,10 @@
         <item name="android:background">@drawable/drop_arrow</item>
     </style>
 
-
+    <style name="SpinnerStyle">
+        <item name="android:layout_marginStart">@dimen/spinner_big_margin</item>
+        <item name="android:layout_marginTop">@dimen/spinner_small_margin</item>
+        <item name="android:layout_marginEnd">@dimen/spinner_big_margin</item>
+        <item name="android:elevation">@dimen/elevation</item>
+    </style>
 </resources>

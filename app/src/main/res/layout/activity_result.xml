@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ResultActivity">
+    tools:context="com.Result.ResultActivity">
 
 
 
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result_text_title"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@id/lottie" />
+        app:lottie_rawRes="@raw/jsson" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/result_card_view"

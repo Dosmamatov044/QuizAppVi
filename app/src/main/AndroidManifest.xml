@@ -19,21 +19,21 @@
         tools:targetApi="m">
 
 
-        <activity android:name="com.ResultActivity">
+        <activity android:name="com.Result.ResultActivity">
 
         </activity>
         <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name="com.Quiztion.QuizActivity" />
-        <activity
-            android:name="com.SplashActivity"
-            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.Quiztion.QuizActivity" />
+        <activity
+            android:name="com.SplashActivity"
+            android:theme="@style/SplashTheme">
+
         </activity>
     </application>
 

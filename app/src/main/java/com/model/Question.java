@@ -16,15 +16,15 @@ public  class Question {
     @SerializedName("incorrect_answers")
     private List<String> incorrect;
 
-    @SerializedName("answers")
-    private List<String> answers;
-    private int selectAnswerPosition;
 
+    private List<String> answers;
+    private Integer selectAnswerPosition;
+@SerializedName("isAnswered")
     private boolean isAnswered;
 
     private EType type;
 
-    public Question(String category, String difficulty, String question, String correctAnswer, List<String> incorrect, List<String> answers, int selectAnswerPosition, boolean isAnswered, EType type) {
+    public Question(String category, String difficulty, String question, String correctAnswer, List<String> incorrect, List<String> answers, Integer selectAnswerPosition, boolean isAnswered, EType type) {
         this.category = category;
         this.difficulty = difficulty;
         this.question = question;
@@ -35,6 +35,10 @@ public  class Question {
         this.isAnswered = isAnswered;
         this.type = type;
     }
+
+
+
+
 
     public boolean isAnswered() {
         return isAnswered;
@@ -52,11 +56,11 @@ public  class Question {
         this.answers = answers;
     }
 
-    public int getSelectAnswerPosition() {
+    public Integer getSelectAnswerPosition() {
         return selectAnswerPosition;
     }
 
-    public void setSelectAnswerPosition(int selectAnswerPosition) {
+    public void setSelectAnswerPosition(Integer selectAnswerPosition) {
         this.selectAnswerPosition = selectAnswerPosition;
     }
 

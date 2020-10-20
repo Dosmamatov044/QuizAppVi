@@ -31,7 +31,12 @@ import hotchemi.android.rate.AppRate;
 
 
 public class SettingsFragment extends Fragment {
-   Button rateUs;
+
+   private SettingsViewModel settingsViewModel;
+
+
+   Button clearHistory;
+    Button rateUs;
    Button leaveFeedback;
     Button share;
     private SettingsViewModel mViewModel;
@@ -66,7 +71,19 @@ public class SettingsFragment extends Fragment {
         share = view.findViewById(R.id.share);
       leaveFeedback=view.findViewById(R.id.leaveFeedback);
   rateUs=view.findViewById(R.id.rateUs);
-        share.setOnClickListener(new View.OnClickListener() {
+    clearHistory=view.findViewById(R.id.clear_history);
+
+
+
+    clearHistory.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mViewModel.clearHistoryAll();
+        }
+    });
+
+
+  share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

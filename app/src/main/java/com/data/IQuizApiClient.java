@@ -1,5 +1,6 @@
 package com.data;
 
+import com.core.IBaseCallback;
 import com.model.Question;
 import com.model.QuizResponse;
 
@@ -8,11 +9,13 @@ import java.util.List;
 public  interface IQuizApiClient {
 
 
-  void getQuestions(Integer amount, Integer category, String difficulty, QuestionCallback callback);
+
+
+    void getQuestions(int amount, int category, String difficulty, QuestionCallback callback);
 
 
 
-    interface QuestionCallback{
+    interface QuestionCallback extends IBaseCallback <List<Question>> {
 
 
 

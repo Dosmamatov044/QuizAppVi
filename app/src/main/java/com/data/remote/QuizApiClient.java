@@ -52,7 +52,7 @@ QuizApi client=retrofit.create(QuizApi.class);
 
     @Override
 
-   public void getQuestions(Integer amount,Integer category,String difficulty,final QuestionCallback callback) {
+   public void getQuestions(int amount,int category,String difficulty,final QuestionCallback callback) {
   Call<QuizResponse>call=client.getQuestions(amount,category,difficulty);
  // Call<QuizResponse>call=client.getQuestions(amount,category,difficulty);
         Log.d("nice","Url"+call.request());
@@ -74,23 +74,9 @@ QuizApi client=retrofit.create(QuizApi.class);
                        Question question=response.body().getResults().get(i);
                        response.body().getResults().set(i,shuffleQuestion(question));
 
-
+                       callback.onSuccess(response.body().getResults());
                    }
 
-                     callback.onSuccess(response.body().getResults());
-
-
-                 }   else
-
-
-
-
-                     {
-
-                     callback.onFailure(new Exception("Response is Empty"+response.code()));
-
-                         assert response.body() != null;
-                         callback.onSuccess(response.body().getResults());
 
 
 
@@ -99,8 +85,7 @@ QuizApi client=retrofit.create(QuizApi.class);
                 }else {
 
                     callback.onFailure(new Exception("Response is Empty"+response.code()));
-                    assert response.body() != null;
-                    callback.onSuccess(response.body().getResults());
+
                 }
             }
 
@@ -119,7 +104,7 @@ QuizApi client=retrofit.create(QuizApi.class);
 
 
    public interface  QuizApi{
-   @GET("/api.php")
+   @GET("api.php")
     Call<QuizResponse> getQuestions(
 
 
@@ -129,9 +114,9 @@ QuizApi client=retrofit.create(QuizApi.class);
 
 
 
-       @Query("amount") Integer amount,
+       @Query("amount") int amount,
 
-      @Query("category") Integer category,
+      @Query("category") int category,
 
         @Query("difficulty") String difficulty);
 

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string-array name="types">
-
-
-
-
-        <item>Any Category</item>
+    <string-array name="category">
+        <item>AllList</item>
         <item>General Knowledge</item>
         <item>Entertainment: Books</item>
         <item>Entertainment: Film</item>
@@ -29,26 +24,14 @@
         <item>Vehicles</item>
         <item>Entertainment: Comics</item>
         <item>Science: Gadgets</item>
-        <item>Entertainment: Japanese Anime &amp; Manga</item>
-        <item>Entertainment: Cartoon &amp; Animations</item>
+        <item>Japanese Anime &amp; Manga</item>
+        <item>Cartoon &amp; Animations</item>
+    </string-array>
 
-
-
-        All</string-array>
-
-    <string-array name="difficulty">
-
-
-
-
-        <item>Any Difficulty</item>
+    <string-array name="difficult">
+        <item>Any</item>
         <item>easy</item>
         <item>medium</item>
         <item>hard</item>
-
-
-
-        All</string-array>
-
-
+    </string-array>
 </resources>

@@ -13,9 +13,9 @@ import com.db.QuizDataBase;
 
 public class QuizApp extends Application {
 public static IQuizApiClient quizApiClient;
-private static IHistoryStorage historyStorage;
+public static IHistoryStorage historyStorage;
 public  static QuizDataBase quizDataBase;
-public QuizRepository repository;
+public static QuizRepository repository;
 
 @Override
     public void onCreate() {
@@ -27,7 +27,7 @@ public QuizRepository repository;
                 fallbackToDestructiveMigration().
                 allowMainThreadQueries().
                 build();
-        historyStorage=new HistoryStorage();
+        historyStorage=new HistoryStorage(quizDataBase.quizDao());
 
    quizApiClient=new QuizApiClient();
 
