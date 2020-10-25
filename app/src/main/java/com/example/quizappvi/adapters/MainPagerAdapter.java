@@ -7,7 +7,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.data.remote.HistoryFragment;
 import com.example.quizappvi.ui.fragments.MainFragment;
-import com.example.quizappvi.ui.fragments.SettingsFragment;
+import com.example.quizappvi.ui.fragments.settings.SettingFragment;
+
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
@@ -28,7 +29,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
                 break;
 
             default:
-                fragment = new SettingsFragment();
+                fragment = new SettingFragment();
                 break;
         }
         return fragment;

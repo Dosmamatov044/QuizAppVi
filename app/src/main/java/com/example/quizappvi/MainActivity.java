@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.QuizApp;
 import com.example.quizappvi.adapters.MainPagerAdapter;
 import com.example.quizappvi.ui.fragments.MainFragment;
 import com.example.viewPager.NonScrollBarViewPager;
@@ -25,7 +26,10 @@ private NonScrollBarViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        changeTheme();
         setContentView(R.layout.activity_main);
+
    quiz=findViewById(R.id.Quiz1);
         viewPager = findViewById(R.id.main_pager);
 
@@ -36,7 +40,12 @@ private NonScrollBarViewPager viewPager;
     }
 
 
+public  void changeTheme(){
 
+      setTheme(QuizApp.preferences.getTheme(R.style.AppTheme));
+
+
+}
 
 
 

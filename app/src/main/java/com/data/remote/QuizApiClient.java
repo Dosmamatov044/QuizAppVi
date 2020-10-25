@@ -52,7 +52,7 @@ QuizApi client=retrofit.create(QuizApi.class);
 
     @Override
 
-   public void getQuestions(int amount,int category,String difficulty,final QuestionCallback callback) {
+   public void getQuestions(int amount,Integer category,String difficulty,final QuestionCallback callback) {
   Call<QuizResponse>call=client.getQuestions(amount,category,difficulty);
  // Call<QuizResponse>call=client.getQuestions(amount,category,difficulty);
         Log.d("nice","Url"+call.request());
@@ -116,7 +116,7 @@ QuizApi client=retrofit.create(QuizApi.class);
 
        @Query("amount") int amount,
 
-      @Query("category") int category,
+      @Query("category") Integer category,
 
         @Query("difficulty") String difficulty);
 

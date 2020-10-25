@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.quizappvi.MainActivity">
+    tools:context="com.example.quizappvi.MainActivity"
+    android:background="@color/colorPrimaryDark"
+    >
 
 
 
@@ -19,7 +21,7 @@
         android:textSize="25sp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="21dp"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorPrimaryDark"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />

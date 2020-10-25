@@ -11,7 +11,7 @@ public  interface IQuizApiClient {
 
 
 
-    void getQuestions(int amount, int category, String difficulty, QuestionCallback callback);
+    void getQuestions(int amount, Integer category, String difficulty, QuestionCallback callback);
 
 
 

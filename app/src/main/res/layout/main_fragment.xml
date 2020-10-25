@@ -124,18 +124,16 @@ app:isb_thumb_color="@color/purple"
         />
 
 
-    <org.angmarch.views.NiceSpinner
+    <Spinner
         android:id="@+id/category_spinner"
         android:layout_width="240dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_marginTop="330dp"
+        android:entries="@array/category"
+        android:spinnerMode="dropdown"
         android:layout_centerHorizontal="true"
-        android:elevation="4dp"
-        app:popupTextAlignment="start"
-
-
-         />
+        />
 
 
 

@@ -16,11 +16,13 @@ public static IQuizApiClient quizApiClient;
 public static IHistoryStorage historyStorage;
 public  static QuizDataBase quizDataBase;
 public static QuizRepository repository;
+public  static  Preferences preferences;
+
 
 @Override
     public void onCreate() {
         super.onCreate();
-
+    preferences=new Preferences(this);
         quizDataBase= Room.databaseBuilder(this,
                 QuizDataBase.class,
                 "quiz.db").

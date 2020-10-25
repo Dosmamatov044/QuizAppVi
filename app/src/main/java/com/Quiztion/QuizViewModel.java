@@ -46,8 +46,10 @@ import java.util.List;
                                                 mQuestions = result;
                                                 questions.setValue(mQuestions);
                                                 currentQuestionPosition.setValue(0);
-                                                if (result.size() != 0) {
+                                                if (result.size() > 0) {
                                                     resultCategory = mQuestions.get(0).getCategory();
+
+
                                                 } else {
                                                     resultCategory = "All";
                                                 }

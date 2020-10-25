@@ -23,6 +23,7 @@ import com.Quiztion.QuizActivity;
 import com.SpinnerHelper;
 import com.example.quizappvi.MainViewModel;
 import com.example.quizappvi.R;
+import com.model.Question;
 
 import org.angmarch.views.NiceSpinner;
 
@@ -53,17 +54,17 @@ public class MainFragment extends Fragment {
     @BindView(R.id.changetextValue)
     TextView amount;
     @BindView(R.id.category_spinner)
-    NiceSpinner categorySpinner;
+    Spinner categorySpinner;
     @BindView(R.id.difficult_spinner)
     Spinner difficultSpinner;
 
 
     private MainViewModel mViewModel = new MainViewModel();
 
-    private int categorySpinner1;
+    private Integer categorySpinner1;
     private String difficultySpinner1;
     private String categoryFromSpinner;
-
+List <Question >list;
     public static MainFragment newInstance() {
         return new MainFragment();
     }
@@ -100,14 +101,10 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initCategorySpinner();
+
         bStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                categorySpinner1 = 0;
-                if (categorySpinner.getSelectedIndex() != 0) {
-                    categorySpinner1 = categorySpinner.getSelectedIndex() + 8;
-                }
 
 
                 QuizActivity.start(getContext(),
@@ -120,7 +117,19 @@ public class MainFragment extends Fragment {
         });
 
 
+categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        categorySpinner1=position+8;
+         categoryFromSpinner=parent.getItemAtPosition(position).toString();
 
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+});
 
         difficultSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -161,32 +170,21 @@ public class MainFragment extends Fragment {
             });
         }
 
-    private void initCategorySpinner() {
-        List<String> category = new LinkedList<>(Collections.singletonList("ANY CATEGORY"));
-        category.add("GENERAL KNOWLEDGE");
-        category.add("ENTERTAINMENT: BOOKS");
-        category.add("ENTERTAINMENT: FILM");
-        category.add("ENTERTAINMENT: MUSIC");
-        category.add("ENTERTAINMENT: MUSICALS & THEATRES");
-        category.add("ENTERTAINMENT: TELEVISION");
-        category.add("ENTERTAINMENT: VIDEO GAMES");
-        category.add("ENTERTAINMENT: BOARD GAMES");
-        category.add("SCIENCE & NATURE");
-        category.add("SCIENCE: COMPUTERS");
-        category.add("SCIENCE: MATHEMATICS");
-        category.add("MYTHOLOGY");
-        category.add("SPORTS");
-        category.add("GEOGRAPHY");
-        category.add("HISTORY");
-        category.add("POLITICS");
-        category.add("ART");
-        category.add("CELEBRITIES");
-        category.add("ANIMALS");
-        category.add("VEHICLES");
-        category.add("ENTERTAINMENT: COMICS");
-        category.add("SCIENCE: GADGETS");
-        category.add("ENTERTAINMENT: JAPANESE ANIME & MANGA");
-        category.add("ENTERTAINMENT: CARTOON & ANIMATIONS");
-        SpinnerHelper.set(category, categorySpinner);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }

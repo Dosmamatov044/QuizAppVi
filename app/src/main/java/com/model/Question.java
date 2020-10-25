@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public  class Question {
+
+   @SerializedName ("category")
     private String category;
 
     private String difficulty;

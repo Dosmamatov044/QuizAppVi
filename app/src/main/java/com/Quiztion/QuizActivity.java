@@ -59,7 +59,7 @@ public class QuizActivity extends AppCompatActivity implements QuizActivityAdapt
     public static final String DIFF_DIFFICULT = "difficult";
 
     public static final String CATEGORY_NAME = "category";
-      int category;
+      Integer category;
     String  difficulty;
     int amount;
     String categoryForSpinner;
@@ -123,40 +123,37 @@ lottie.setVisibility(View.VISIBLE);
         viewModel.questions.observe(this, new Observer<List<Question>>() {
 
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(List<Question> questions) {
                 adapter.setQuestions(questions);
+
+                categoryText.setText(category.toString());
+                 categoryText.setText(categoryForSpinner);
+
             }});
 
-        viewModel.init(amount , category , difficulty);
+        getQuizData();
         getPosition();
 
 
 
-
-
-        getQuizData();
-
+        viewModel.init(amount ,category, difficulty);
 
         viewModel.finishEvent.observe(this, aVoid -> {
             finish();
         });
 
-        viewModel.openResultEvent.observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                ResultActivity.start(QuizActivity.this, integer);
-            }
-        });
+        viewModel.openResultEvent.observe(this, integer -> ResultActivity.start(QuizActivity.this, integer));
 
     }
 
 
-    public static void start(Context context, Integer amount, int category, String difficultValue, String categoryForSpinner) {
+    public static void start(Context context, Integer amount, Integer categoryP, String difficultValue, String categoryForSpinner) {
 
         Intent intent = new Intent(context, QuizActivity.class);
         intent.putExtra(SEEK_BAR, amount);
-        intent.putExtra(CATEGORY_NAME, category);
+        intent.putExtra("catkeys", categoryP);
         intent.putExtra(DIFF_DIFFICULT, difficultValue);
         intent.putExtra("category", categoryForSpinner);
 
@@ -169,7 +166,7 @@ lottie.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         amount = intent.getIntExtra(SEEK_BAR, 5);
-        category = intent.getIntExtra(CATEGORY_NAME, 0);
+        category = intent.getIntExtra("catkeys", 1);
 
         difficulty = intent.getStringExtra(DIFF_DIFFICULT);
         categoryForSpinner = intent.getStringExtra("category");
@@ -183,7 +180,7 @@ lottie.setVisibility(View.VISIBLE);
         }
 
 
-        viewModel.init(amount , category , difficulty);
+
         viewModel.questions.observe(this, (List<Question> questions) -> {
             try {
 
@@ -191,7 +188,7 @@ lottie.setVisibility(View.VISIBLE);
                 if ( list.size()!=0) {
 
 lottie.setVisibility(View.GONE);
-                    adapter.setQuestions(list);
+
 
                     image.setVisibility(View.VISIBLE);
 
@@ -203,8 +200,9 @@ lottie.setVisibility(View.GONE);
                     categoryText.setVisibility(View.VISIBLE);
 
 
-                    categoryText.setText(String.valueOf(list.get(position).getDifficulty()));
-                  //   categoryText.setText(String.valueOf(categoryForSpinner));
+
+
+                    //   categoryText.setText(String.valueOf(categoryForSpinner));
 
 
 
@@ -266,11 +264,6 @@ lottie.setVisibility(View.GONE);
                     progressBar.setProgress(position + 1);
 
                     recyclerView.smoothScrollToPosition(position);
-
-
-
-
-
                 }
             });
 

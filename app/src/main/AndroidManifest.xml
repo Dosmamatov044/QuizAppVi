@@ -35,6 +35,12 @@
             android:theme="@style/SplashTheme">
 
         </activity>
+<service
+
+    android:name="com.FireBase.MyFcmService">
+
+
+</service>
     </application>
 
 </manifest>

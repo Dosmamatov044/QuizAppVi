@@ -26,7 +26,7 @@ this.quizDao=quizDao;
 
 
     @Override
-    public void getQuestions(int amount, int category, String difficulty, QuestionCallback callback) {
+    public void getQuestions(int amount, Integer category, String difficulty, QuestionCallback callback) {
         quizApiClient.getQuestions(amount, category, difficulty, new QuestionCallback() {
             @Override
             public void onSuccess(List<Question> questions) {
