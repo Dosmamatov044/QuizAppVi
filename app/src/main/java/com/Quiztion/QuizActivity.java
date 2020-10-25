@@ -23,6 +23,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+
+import com.QuizApp;
 import com.Result.ResultActivity;
 import com.airbnb.lottie.LottieAnimationView;
 
@@ -81,6 +83,8 @@ Button skip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       changeTheme();
+
         setContentView(R.layout.activity_qui__light);
 
 
@@ -158,6 +162,12 @@ lottie.setVisibility(View.VISIBLE);
         intent.putExtra("category", categoryForSpinner);
 
         context.startActivity(intent);
+
+
+    }
+    public  void changeTheme(){
+
+        setTheme(QuizApp.preferences.getTheme(R.style.AppTheme));
 
 
     }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.QuizApp;
 import com.example.quizappvi.R;
 import com.model.QuestionResult;
 
@@ -41,9 +42,20 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+
+    public  void changeTheme(){
+
+        setTheme(QuizApp.preferences.getTheme(R.style.AppTheme));
+
+
+    }
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        changeTheme();
+
         setContentView(R.layout.activity_result);
         ButterKnife.bind(this);
         mResultViewModel = ViewModelProviders.of(this).get(ResultViewModel.class);
