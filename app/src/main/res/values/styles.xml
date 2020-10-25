@@ -49,10 +49,10 @@
 
     <style name="DarkMode" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#232629</item>
-        <item name="colorPrimaryDark">#0D0D15</item>
-        <item name="colorAccent">#5D5E60</item>
-        <item name="backgroundColor">#121519</item>
+        <item name="colorPrimary">#9DAAB6</item>
+        <item name="colorPrimaryDark">#A8A8B6</item>
+        <item name="colorAccent">#7A8291</item>
+        <item name="backgroundColor">#B2B9C3</item>
         <item name="colorButtonNormal">#F2FFFFFF</item>
     </style>
 
