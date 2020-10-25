@@ -59,10 +59,10 @@ public class SettingFragment extends Fragment {
     public void initRecyclerView() {
         list = new ArrayList<>();
         list.add(model =new ThemeModel(R.color.green,false));
-        list.add(model =new ThemeModel(R.color.dark,false));
+        list.add(model =new ThemeModel(R.color.blue,false));
         list.add(model =new ThemeModel(R.color.yellow,false));
         list.add(model =new ThemeModel(R.color.pink,false));
-        list.add(model =new ThemeModel(R.color.light_gray,false));
+        list.add(model =new ThemeModel(R.color.black,false));
         for (int i = 0; i < list.size(); i++) {
             if (i == QuizApp.preferences.getThemePosition())
                 list.get(i).setItCheckout(true);
@@ -90,9 +90,11 @@ public class SettingFragment extends Fragment {
                             break;
                         case 3:
                             QuizApp.preferences.saveInstance(R.style.PinkMode);
-
+                            break;
                             case 4:
-                            QuizApp.preferences.saveInstance(R.style.SplashTheme);
+                            QuizApp.preferences.saveInstance(R.style.Theme_AppCompat_DayNight_DarkActionBar);
+
+
 
 
                     }
