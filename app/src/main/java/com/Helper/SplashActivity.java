@@ -1,4 +1,4 @@
-package com;
+package com.Helper;
 
 import android.app.Activity;
 import android.content.Intent;

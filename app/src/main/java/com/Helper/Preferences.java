@@ -1,11 +1,9 @@
-package com;
+package com.Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 public class Preferences {
-    public static final String PREF_KEY = "isClicked";
     public static final String PREF_THEME = "theme";
     private SharedPreferences preferences;
     public static volatile Preferences instance;

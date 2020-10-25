@@ -2,8 +2,8 @@ package com.data;
 
 import androidx.lifecycle.LiveData;
 
-import com.data.remote.History;
-import com.data.remote.IHistoryStorage;
+import com.example.quizappvi.ui.fragments.History.History;
+import com.example.quizappvi.ui.fragments.History.IHistoryStorage;
 import com.db.QuizDao;
 import com.model.Question;
 import com.model.QuestionResult;

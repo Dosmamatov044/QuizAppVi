@@ -1,4 +1,4 @@
-package com;
+package com.Helper;
 
 import com.google.gson.annotations.SerializedName;
 

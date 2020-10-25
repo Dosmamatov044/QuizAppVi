@@ -12,7 +12,8 @@ public class DataConverter {
    public static  Long toRaw(@Nullable Date date){
 
 
-       return  date.getTime();
+    assert date != null;
+    return  date.getTime();
    }
    @TypeConverter
 public  static Date fromRaw(@Nullable Long timestamp){

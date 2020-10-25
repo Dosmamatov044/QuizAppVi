@@ -1,6 +1,5 @@
-package com.data.remote;
+package com.example.quizappvi.ui.fragments.History;
 
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -11,11 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -23,7 +20,6 @@ import android.widget.Toast;
 import com.QuizApp;
 import com.example.AdapterHistory.AdapterH;
 import com.example.quizappvi.R;
-import com.example.quizappvi.ui.fragments.ClassHis;
 
 import java.util.ArrayList;
 import java.util.List;

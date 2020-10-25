@@ -1,10 +1,10 @@
-package com.data.remote;
+package com.example.quizappvi.ui.fragments.History;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.QuizApp;
-import com.SingleLIveEvent;
+import com.Helper.SingleLIveEvent;
 
 import java.util.List;
 

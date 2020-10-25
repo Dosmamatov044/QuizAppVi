@@ -4,10 +4,11 @@ import android.app.Application;
 
 import androidx.room.Room;
 
+import com.Helper.Preferences;
 import com.data.IQuizApiClient;
 import com.data.QuizRepository;
-import com.data.remote.HistoryStorage;
-import com.data.remote.IHistoryStorage;
+import com.example.quizappvi.ui.fragments.History.HistoryStorage;
+import com.example.quizappvi.ui.fragments.History.IHistoryStorage;
 import com.data.remote.QuizApiClient;
 import com.db.QuizDataBase;
 
@@ -16,7 +17,7 @@ public static IQuizApiClient quizApiClient;
 public static IHistoryStorage historyStorage;
 public  static QuizDataBase quizDataBase;
 public static QuizRepository repository;
-public  static  Preferences preferences;
+public  static Preferences preferences;
 
 
 @Override

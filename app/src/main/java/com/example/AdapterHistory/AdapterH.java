@@ -1,31 +1,22 @@
 package com.example.AdapterHistory;
 
-import android.app.LauncherActivity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.data.remote.History;
+import com.example.quizappvi.ui.fragments.History.History;
 import com.example.quizappvi.R;
-import com.example.quizappvi.ui.fragments.ClassHis;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class AdapterH  extends RecyclerView.Adapter<AdapterH.ViewHolderH>  {
     private List<History> list ;

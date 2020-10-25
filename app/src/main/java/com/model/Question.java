@@ -1,6 +1,6 @@
 package com.model;
 
-import com.EType;
+import com.Helper.EType;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

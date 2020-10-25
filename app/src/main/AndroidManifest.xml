@@ -31,7 +31,7 @@
         </activity>
         <activity android:name="com.Quiztion.QuizActivity" />
         <activity
-            android:name="com.SplashActivity"
+            android:name="com.Helper.SplashActivity"
             android:theme="@style/SplashTheme">
 
         </activity>

@@ -4,7 +4,7 @@ import android.view.View;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.QuizApp;
-import com.SingleLIveEvent;
+import com.Helper.SingleLIveEvent;
 import com.data.IQuizApiClient;
 import com.data.QuizRepository;
 import com.model.Question;

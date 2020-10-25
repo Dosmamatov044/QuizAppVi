@@ -1,4 +1,4 @@
-package com.data.remote;
+package com.example.quizappvi.ui.fragments.History;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

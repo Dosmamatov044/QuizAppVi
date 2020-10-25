@@ -13,18 +13,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.EType;
+import com.Helper.EType;
 
 import com.example.quizappvi.R;
 import com.example.quizappvi.databinding.QuizlistBinding;
 import com.model.Question;
 
 
-
-
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -53,9 +51,10 @@ public class QuizActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public ViewHolderQuizActivity onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View layoutInflater = LayoutInflater.from(parent.getContext()).inflate(R.layout.quizlist, parent, false);
-
-        return new ViewHolderQuizActivity(layoutInflater, listener);
+        QuizlistBinding binding = DataBindingUtil.bind(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.quizlist, parent, false));
+        assert binding != null;
+        return new ViewHolderQuizActivity(binding,listener);
     }
 
     @Override
@@ -110,12 +109,12 @@ public class QuizActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
         @SuppressLint("ClickableViewAccessibility")
-        public ViewHolderQuizActivity(@NonNull View itemView, Listener listener) {
-            super(itemView);
-binding=QuizlistBinding.bind(itemView);
+        public ViewHolderQuizActivity(QuizlistBinding binding, Listener listener) {
+            super(binding.getRoot());
 
+ this.binding=binding;
 
-            ButterKnife.bind(this, itemView);
+         //   ButterKnife.bind(this, itemView);
 
 
 
@@ -151,7 +150,7 @@ onClick();
                 setButtonsEnabled(true);
 
             }
-            question_tv.setText(Html.fromHtml(question.getQuestion()));
+           binding.quzz.setText(Html.fromHtml(question.getQuestion()));
             if (question.getType() != null) {
 
 
